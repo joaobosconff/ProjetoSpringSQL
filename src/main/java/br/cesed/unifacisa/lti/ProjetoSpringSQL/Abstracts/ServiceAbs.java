@@ -6,15 +6,15 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 
-import projeto.Exception.erro;
-import projeto.Interfaces.Identificable;
+import br.cesed.unifacisa.lti.ProjetoSpringSQL.Exceptions.erro;
+import br.cesed.unifacisa.lti.ProjetoSpringSQL.Interfaces.Identificable;
 
 
 public abstract class ServiceAbs <T extends Identificable>{
 	
-	protected JpaRepository<T,String> repository;
+	protected JpaRepository<T,Long> repository;
 	
-	public ServiceAbs(JpaRepository<T,String> repository) {
+	public ServiceAbs(JpaRepository<T,Long> repository) {
 		this.repository = repository;
 	}
 	
@@ -22,7 +22,7 @@ public abstract class ServiceAbs <T extends Identificable>{
 		return repository.findAll();
 	}
 	
-	public T getById(String id) { //READ BY ID
+	public T getById(Long id) { //READ BY ID
 		return repository.findById(id).get() ;
 	}
 	
@@ -38,7 +38,7 @@ public abstract class ServiceAbs <T extends Identificable>{
 	}
 	
 	
-	public void deleta( String id ) throws erro { // DELETE
+	public void deleta( Long id ) throws erro { // DELETE
 		if (repository.existsById(id)) {
 			repository.deleteById(id); 
 		}else{

@@ -1,20 +1,32 @@
 package br.cesed.unifacisa.lti.ProjetoSpringSQL.domain.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.OneToOne;
+
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-import projeto.Interfaces.Identificable;
+import br.cesed.unifacisa.lti.ProjetoSpringSQL.Interfaces.Identificable;
 
-@Document
+
+
+@Entity
 public class Cliente implements Identificable{
 
 	@Id
-	private String id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 	private String nome;
 	private Long telefone;
+	@OneToOne
+	private Venda venda;
+	
+	
+	@OneToOne
 	private Endereco endereco;
 	
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 	public String getNome() {

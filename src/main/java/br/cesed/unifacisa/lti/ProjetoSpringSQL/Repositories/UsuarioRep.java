@@ -4,9 +4,9 @@ package br.cesed.unifacisa.lti.ProjetoSpringSQL.Repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import projeto.domain.entities.Usuario;
+import br.cesed.unifacisa.lti.ProjetoSpringSQL.domain.entities.Usuario;
 
 @Repository
-public interface UsuarioRep extends JpaRepository<Usuario, String>{
+public interface UsuarioRep extends JpaRepository<Usuario, Long>{
 
 }

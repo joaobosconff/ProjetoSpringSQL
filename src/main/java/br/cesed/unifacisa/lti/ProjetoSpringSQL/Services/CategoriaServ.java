@@ -1,15 +1,17 @@
 package br.cesed.unifacisa.lti.ProjetoSpringSQL.Services;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import projeto.Abstracts.ServiceAbs;
-import projeto.domain.entities.Categoria;
-import projeto.Repository.CategoriaRep;
+import br.cesed.unifacisa.lti.ProjetoSpringSQL.Abstracts.ServiceAbs;
+import br.cesed.unifacisa.lti.ProjetoSpringSQL.domain.entities.Categoria;
+import br.cesed.unifacisa.lti.ProjetoSpringSQL.Repositories.CategoriaRep;
 
 
 @Service
 public class CategoriaServ extends ServiceAbs<Categoria>{
 	
+	@Autowired
 	public CategoriaServ(CategoriaRep repository) {
 		super(repository);
 	}

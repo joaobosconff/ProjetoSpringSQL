@@ -1,18 +1,32 @@
 package br.cesed.unifacisa.lti.ProjetoSpringSQL.domain.entities;
 
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.OneToMany;
+
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-import projeto.Interfaces.Identificable;
+import br.cesed.unifacisa.lti.ProjetoSpringSQL.Interfaces.Identificable;
 
-@Document
+@Entity
 public class Categoria implements Identificable{
+	
+	
 	@Id
-	private String id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+	
+	@OneToMany
+	private List<Produto> produtos;
+	
 	private String nome;
 	
 	
-	public String getId() {
+	
+	public Long getId() {
 		return id;
 	}
 	public String getNome() {

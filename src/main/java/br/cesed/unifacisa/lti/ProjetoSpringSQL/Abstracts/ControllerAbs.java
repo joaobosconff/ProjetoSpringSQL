@@ -12,47 +12,47 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import projeto.Exception.erro;
-import projeto.Interfaces.Identificable;
+import br.cesed.unifacisa.lti.ProjetoSpringSQL.Exceptions.erro;
+import br.cesed.unifacisa.lti.ProjetoSpringSQL.Interfaces.Identificable;
 
 
-public abstract class ControllerAbs<A extends Identificable> {
+public abstract class ControllerAbs<T extends Identificable> {
 	
 	@Autowired
-	protected ServiceAbs<A> service;
+	protected ServiceAbs<T> service;
 	
-	public ControllerAbs(ServiceAbs<A> service) {
+	public ControllerAbs(ServiceAbs<T> service) {
 		this.service = service;
 	}
 	
 	@GetMapping("/")
-	public List<A> getAll(){ // READ ALL
+	public List<T> getAll(){ // READ ALL
 		return service.getAll();
 	}
 	
 	
 	@GetMapping("/{id}") //READ BY ID
-	public ResponseEntity<A> getById(@PathVariable String id) {
+	public ResponseEntity<T> getById(@PathVariable Long id) {
 		service.getById(id);
-		return new ResponseEntity<A>(service.getById(id),HttpStatus.OK);
+		return new ResponseEntity<T>(service.getById(id),HttpStatus.OK);
 	}
 	
 	@PostMapping("/")
-	public ResponseEntity<A> addA(@RequestBody A a) { //ADD A
+	public ResponseEntity<T> addA(@RequestBody T a) { //ADD A
 		service.add(a);
-		return new ResponseEntity<A>(a,HttpStatus.CREATED);
+		return new ResponseEntity<T>(a,HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/")
-	public ResponseEntity<A> Atualiza(@RequestBody A a) throws erro { // ATUALIZA 
+	public ResponseEntity<T> Atualiza(@RequestBody T a) throws erro { // ATUALIZA 
 		if (service.atualiza(a).equals(a)) {
 			service.atualiza(a);
-			return new ResponseEntity<A>(service.atualiza(a),HttpStatus.OK);
+			return new ResponseEntity<T>(service.atualiza(a),HttpStatus.OK);
 		}throw new erro("Não foi apagado!! ID errado ou não existe");
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<String> delA(@PathVariable String id) throws erro{ // DELETA A
+	public ResponseEntity<String> delA(@PathVariable Long id) throws erro{ // DELETA A
 		service.deleta(id);
 		return new ResponseEntity<String>("DELETADO",HttpStatus.OK);
 	}

@@ -1,24 +1,37 @@
 package br.cesed.unifacisa.lti.ProjetoSpringSQL.domain.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.OneToOne;
+
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-import projeto.Interfaces.Identificable;
+import br.cesed.unifacisa.lti.ProjetoSpringSQL.Interfaces.Identificable;
 
-@Document
+@Entity
 public class Produto implements Identificable{
+	
+	
 	@Id
-	private String id;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long id;
 	private String nome;
-	@DBRef
+	
+	@OneToOne
 	private Marca marca;
-	@DBRef
+	@OneToOne
 	private Categoria categoria;
 	private Double valor;
 	private int quantidade;
 	
-	public String getId() {
+	
+	
+	
+	
+	
+	
+	public Long getId() {
 		return id;
 	}
 	public String getNome() {
@@ -51,7 +64,7 @@ public class Produto implements Identificable{
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
 	}
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	

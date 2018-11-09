@@ -1,9 +1,20 @@
 package br.cesed.unifacisa.lti.ProjetoSpringSQL.domain.entities;
 
-import org.springframework.data.mongodb.core.mapping.Document;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
-@Document
+@Entity
 public class Endereco {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long id ;
+	
+	@OneToOne
+	private Cliente cliente;
 	
 	private String rua ;
 	private String bairro;

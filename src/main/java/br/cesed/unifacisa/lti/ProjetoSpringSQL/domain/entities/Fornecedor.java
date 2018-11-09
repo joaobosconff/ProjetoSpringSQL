@@ -2,12 +2,20 @@ package br.cesed.unifacisa.lti.ProjetoSpringSQL.domain.entities;
 
 import java.time.LocalDate;
 
-import org.springframework.data.mongodb.core.mapping.Document;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 
-@Document
+
+@Entity
 public class Fornecedor {
 	
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long id;
 	private String nome;
 	private Long telefone;
 	private String email;

@@ -1,22 +1,42 @@
 package br.cesed.unifacisa.lti.ProjetoSpringSQL.domain.entities;
 
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.OneToMany;
+
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-import projeto.Interfaces.Identificable;
 
-@Document
+import br.cesed.unifacisa.lti.ProjetoSpringSQL.Interfaces.Identificable;
+
+@Entity
 public class Marca implements Identificable{
 	
 	@Id
-	private String id;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long id;
 	private String nome;
 	private Fornecedor fornecedor;
+	@OneToMany
+	private List<Produto> produtos;
 	
-	public String getId() {
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public Long getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void Long(Long id) {
 		this.id = id;
 	}
 	public String getNome() {

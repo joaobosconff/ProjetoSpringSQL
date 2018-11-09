@@ -5,9 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import projeto.Abstracts.ControllerAbs;
-import projeto.Service.UsuarioServ;
-import projeto.domain.entities.Usuario;
+import br.cesed.unifacisa.lti.ProjetoSpringSQL.Abstracts.ControllerAbs;
+import br.cesed.unifacisa.lti.ProjetoSpringSQL.Services.UsuarioServ;
+import br.cesed.unifacisa.lti.ProjetoSpringSQL.domain.entities.Usuario;
 
 
 @RestController

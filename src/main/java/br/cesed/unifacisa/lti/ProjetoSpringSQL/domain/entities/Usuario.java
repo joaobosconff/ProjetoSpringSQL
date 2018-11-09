@@ -1,18 +1,26 @@
 package br.cesed.unifacisa.lti.ProjetoSpringSQL.domain.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.OneToOne;
+
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-import projeto.Interfaces.Identificable;
 
-@Document
+import br.cesed.unifacisa.lti.ProjetoSpringSQL.Interfaces.Identificable;
+
+@Entity
 public class Usuario implements Identificable{
 	
 	@Id
-	private String id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 	private String matriculaFuncionario;
 	private String senha;
 	
+	@OneToOne
+	private Funcionario funcionario;
 	
 	public String getMatriculaFuncionario() {
 		return matriculaFuncionario;
@@ -26,7 +34,7 @@ public class Usuario implements Identificable{
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 	

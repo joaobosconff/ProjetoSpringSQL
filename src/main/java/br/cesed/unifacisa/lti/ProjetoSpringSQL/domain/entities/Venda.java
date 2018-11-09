@@ -1,23 +1,32 @@
 package br.cesed.unifacisa.lti.ProjetoSpringSQL.domain.entities;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-import projeto.Interfaces.Identificable;
 
-@Document
+import br.cesed.unifacisa.lti.ProjetoSpringSQL.Interfaces.Identificable;
+
+@Entity
 public class Venda implements Identificable{
+	
 	@Id
-	private String id;
-	@DBRef
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long id;
+	@OneToOne
 	private Cliente cliente;
-	@DBRef
+	@OneToOne
 	private Funcionario funcionario;
 	private Double valorTotal;
-	private ArrayList<Pedido> pedidos;
+	@OneToMany
+	private List<Pedido> pedidos;
 	
 	
 	public Cliente getCliente() {
@@ -38,13 +47,13 @@ public class Venda implements Identificable{
 	public void setValorTotal(Double valorTotal) {
 		this.valorTotal = valorTotal;
 	}
-	public ArrayList<Pedido> getPedidos() {
+	public List<Pedido> getPedidos() {
 		return pedidos;
 	}
 	public void setPedidos(ArrayList<Pedido> pedidos) {
 		this.pedidos = pedidos;
 	}
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 	
