@@ -4,18 +4,25 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+
+
+import br.cesed.unifacisa.lti.ProjetoSpringSQL.Interfaces.Identificable;
 
 @Entity
-public class Endereco {
+public class Endereco implements Identificable{
+	
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id ;
 	
-	@OneToOne
-	private Cliente cliente;
 	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	private String rua ;
 	private String bairro;
 	private Short numero;

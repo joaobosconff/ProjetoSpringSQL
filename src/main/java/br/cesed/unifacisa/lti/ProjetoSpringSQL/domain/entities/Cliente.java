@@ -19,8 +19,6 @@ public class Cliente implements Identificable{
 	private Long id;
 	private String nome;
 	private Long telefone;
-	@OneToOne
-	private Venda venda;
 	
 	
 	@OneToOne

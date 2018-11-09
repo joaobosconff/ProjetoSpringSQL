@@ -3,10 +3,9 @@ package br.cesed.unifacisa.lti.ProjetoSpringSQL.domain.entities;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.OneToOne;
+
 
 import org.springframework.data.annotation.Id;
-
 
 import br.cesed.unifacisa.lti.ProjetoSpringSQL.Interfaces.Identificable;
 
@@ -19,8 +18,6 @@ public class Usuario implements Identificable{
 	private String matriculaFuncionario;
 	private String senha;
 	
-	@OneToOne
-	private Funcionario funcionario;
 	
 	public String getMatriculaFuncionario() {
 		return matriculaFuncionario;

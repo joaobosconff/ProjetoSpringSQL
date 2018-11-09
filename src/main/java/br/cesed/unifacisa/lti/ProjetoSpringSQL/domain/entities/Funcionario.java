@@ -1,11 +1,12 @@
 package br.cesed.unifacisa.lti.ProjetoSpringSQL.domain.entities;
 
-import java.util.List;
+
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.OneToMany;
+
 import javax.persistence.OneToOne;
 
 import org.springframework.data.annotation.Id;
@@ -20,8 +21,6 @@ public class Funcionario implements Identificable {
 	private Long id;
 	private String nome;
 	private String registro;
-	@OneToMany
-	private List<Venda> vendas;
 	@OneToOne
 	private Usuario usuario;
 	

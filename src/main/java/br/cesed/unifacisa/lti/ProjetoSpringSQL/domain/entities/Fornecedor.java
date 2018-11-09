@@ -2,6 +2,7 @@ package br.cesed.unifacisa.lti.ProjetoSpringSQL.domain.entities;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,6 +16,7 @@ public class Fornecedor {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="id")
 	private Long id;
 	private String nome;
 	private Long telefone;
