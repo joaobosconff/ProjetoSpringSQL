@@ -1,12 +1,14 @@
 package br.cesed.unifacisa.lti.ProjetoSpringSQL.domain.entities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.OneToMany;
 
 
-import org.springframework.data.annotation.Id;
+import javax.persistence.Id;
 
 
 
@@ -19,7 +21,7 @@ public class Pedido {
 	private int quantidade;
 	
 	@OneToMany
-	private Produto produto;
+	private List<Produto> produto;
 	private Double valorTotalPedido;
 	
 	public int getQuantidade() {
@@ -28,12 +30,7 @@ public class Pedido {
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
 	}
-	public Produto getProduto() {
-		return produto;
-	}
-	public void setProduto(Produto produto) {
-		this.produto = produto;
-	}
+	
 	public Double getValorTotalPedido() {
 		return valorTotalPedido;
 	}

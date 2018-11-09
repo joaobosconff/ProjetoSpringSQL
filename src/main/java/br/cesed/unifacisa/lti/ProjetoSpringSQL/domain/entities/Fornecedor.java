@@ -8,10 +8,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import br.cesed.unifacisa.lti.ProjetoSpringSQL.Interfaces.Identificable;
+
 
 
 @Entity
-public class Fornecedor {
+public class Fornecedor implements Identificable{
 	
 	
 	@Id
@@ -61,6 +63,10 @@ public class Fornecedor {
 	}
 	public void setVencimentoDeContrato(LocalDate vencimentoDeContrato) {
 		this.vencimentoDeContrato = vencimentoDeContrato;
+	}
+	@Override
+	public Long getId() {
+		return this.id;
 	}
 	
 }

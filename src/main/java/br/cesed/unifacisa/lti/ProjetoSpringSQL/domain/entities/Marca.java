@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.OneToOne;
 
-import org.springframework.data.annotation.Id;
+import javax.persistence.Id;
 
 
 import br.cesed.unifacisa.lti.ProjetoSpringSQL.Interfaces.Identificable;
@@ -23,9 +23,7 @@ public class Marca implements Identificable{
 	@OneToOne
 	private Fornecedor fornecedor;
 	
-	
-	
-	
+
 	
 	
 	

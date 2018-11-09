@@ -5,7 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.OneToOne;
 
-import org.springframework.data.annotation.Id;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import br.cesed.unifacisa.lti.ProjetoSpringSQL.Interfaces.Identificable;
 
@@ -17,7 +18,7 @@ public class Produto implements Identificable{
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	private String nome;
-	
+
 	@OneToOne
 	private Marca marca;
 	@OneToOne

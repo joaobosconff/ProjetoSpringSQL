@@ -2,12 +2,15 @@ package br.cesed.unifacisa.lti.ProjetoSpringSQL.domain.entities;
 
 
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
 
-import org.springframework.data.annotation.Id;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import br.cesed.unifacisa.lti.ProjetoSpringSQL.Interfaces.Identificable;
 
@@ -22,6 +25,7 @@ public class Categoria implements Identificable{
 
 	private String nome;
 	
+
 	
 	
 	public Long getId() {
