@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-
+import javax.validation.constraints.Positive;
 import javax.persistence.Id;
 
 
@@ -24,6 +24,7 @@ public class Venda implements Identificable{
 	private Cliente cliente;
 	@OneToOne
 	private Funcionario funcionario;
+	@Positive(message="{number}")
 	private Double valorTotal;
 	@OneToMany
 	private List<Pedido> pedidos;

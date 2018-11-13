@@ -2,11 +2,19 @@ package br.cesed.unifacisa.lti.ProjetoSpringSQL.domain.entities;
 
 import java.time.LocalDate;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.Positive;
+
+import org.hibernate.validator.constraints.br.CNPJ;
 
 import br.cesed.unifacisa.lti.ProjetoSpringSQL.Interfaces.Identificable;
 
@@ -20,11 +28,18 @@ public class Fornecedor implements Identificable{
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="id")
 	private Long id;
+	
+	@NotBlank(message="{string}")
 	private String nome;
+	@Positive(message="{number}")
 	private Long telefone;
+	@Email(message="{string.email}")
 	private String email;
+	@CNPJ(message="{string.cnpj}")
 	private String cnpj;
+	@PastOrPresent(message="{data}")
 	private LocalDate dataDeContrato;
+	@FutureOrPresent(message="{data}")
 	private LocalDate vencimentoDeContrato;
 	
 	

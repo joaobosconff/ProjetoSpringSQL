@@ -2,6 +2,8 @@ package br.cesed.unifacisa.lti.ProjetoSpringSQL.Abstracts;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,19 +34,19 @@ public abstract class ControllerAbs<T extends Identificable> {
 	
 	
 	@GetMapping("/{id}") //READ BY ID
-	public ResponseEntity<T> getById(@PathVariable Long id) {
+	public ResponseEntity<T> getById(@Valid @PathVariable Long id) {
 		service.getById(id);
 		return new ResponseEntity<T>(service.getById(id),HttpStatus.OK);
 	}
 	
 	@PostMapping("/")
-	public ResponseEntity<T> addA(@RequestBody T a) { //ADD A
+	public ResponseEntity<T> addA(@Valid @RequestBody T a) { //ADD A
 		service.add(a);
 		return new ResponseEntity<T>(a,HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/")
-	public ResponseEntity<T> Atualiza(@RequestBody T a) throws erro { // ATUALIZA 
+	public ResponseEntity<T> Atualiza(@Valid @RequestBody T a) throws erro { // ATUALIZA 
 		if (service.atualiza(a).equals(a)) {
 			service.atualiza(a);
 			return new ResponseEntity<T>(service.atualiza(a),HttpStatus.OK);
@@ -52,7 +54,7 @@ public abstract class ControllerAbs<T extends Identificable> {
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<String> delA(@PathVariable Long id) throws erro{ // DELETA A
+	public ResponseEntity<String> delA(@Valid @PathVariable Long id) throws erro{ // DELETA A
 		service.deleta(id);
 		return new ResponseEntity<String>("DELETADO",HttpStatus.OK);
 	}

@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
 import javax.persistence.OneToOne;
-
+import javax.validation.constraints.NotBlank;
 import javax.persistence.Id;
 
 import br.cesed.unifacisa.lti.ProjetoSpringSQL.Interfaces.Identificable;
@@ -19,7 +19,9 @@ public class Funcionario implements Identificable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
+	@NotBlank(message="{string}")
 	private String nome;
+	@NotBlank(message="{string}")
 	private String registro;
 	@OneToOne
 	private Usuario usuario;

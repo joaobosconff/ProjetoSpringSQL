@@ -4,9 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.OneToOne;
-
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 import br.cesed.unifacisa.lti.ProjetoSpringSQL.Interfaces.Identificable;
 
@@ -17,13 +17,18 @@ public class Produto implements Identificable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
+	
+	@NotBlank(message="{string}")
 	private String nome;
 
 	@OneToOne
 	private Marca marca;
 	@OneToOne
 	private Categoria categoria;
+	@Positive(message="{number}")
 	private Double valor;
+	
+	@Positive(message="{number}")
 	private int quantidade;
 	
 	
